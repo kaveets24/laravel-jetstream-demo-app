@@ -24,3 +24,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/posts/{post}', [PostsController::class, 'show']);
+
+
+
+// Route::get("/articles", function() {
+//     $articles = App\Models\Article::latest()->get();
+
+//     return $articles;
+// });
+
+
+
+
