@@ -20,6 +20,7 @@
 </head>
 
 <body class="font-sans antialiased">
+    <!-- Vue App Container, will fail unless specific request headers are set by Inertia -->
     @inertia
 </body>
 

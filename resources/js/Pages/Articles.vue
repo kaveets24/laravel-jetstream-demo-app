@@ -8,8 +8,14 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    Articles
+                <div class="overflow-hidden shadow-xl sm:rounded-lg">
+                    <ul class="p-6">
+                        <li class="border-b border-gray-200 p-4" v-for="article in $page.articles" :key="article.title">
+                            <a class="block font-bold mb-2" :href="'/articles/' + article.id">{{ article.title }}</a>
+                            <p class="font-thin mb-2">{{ article.excerpt }}</p>
+                            <a class="block underline mb-2" :href="'/articles/' + article.id">Read More</a>
+                            </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -3035,6 +3035,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3413,6 +3421,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -25900,6 +25914,21 @@ var render = function() {
                         "\n                            Dashboard\n                        "
                       )
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jet-nav-link",
+                    {
+                      attrs: {
+                        href: "/articles",
+                        active: _vm.$page.currentRouteName == "articles"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Articles\n                        "
+                      )
+                    ]
                   )
                 ],
                 1
@@ -26238,6 +26267,17 @@ var render = function() {
                     }
                   },
                   [_vm._v("\n                    Dashboard\n                ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "jet-responsive-nav-link",
+                  {
+                    attrs: {
+                      href: "/articles",
+                      active: _vm.$page.currentRouteName == "articles"
+                    }
+                  },
+                  [_vm._v("\n                    Articles\n                ")]
                 )
               ],
               1
@@ -27218,8 +27258,46 @@ var render = function() {
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
           _c(
             "div",
-            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
-            [_vm._v("\n                Articles\n            ")]
+            { staticClass: "overflow-hidden shadow-xl sm:rounded-lg" },
+            [
+              _c(
+                "ul",
+                { staticClass: "p-6" },
+                _vm._l(_vm.$page.articles, function(article) {
+                  return _c(
+                    "li",
+                    {
+                      key: article.title,
+                      staticClass: "border-b border-gray-200 p-4"
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "block font-bold mb-2",
+                          attrs: { href: "/articles/" + article.id }
+                        },
+                        [_vm._v(_vm._s(article.title))]
+                      ),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "font-thin mb-2" }, [
+                        _vm._v(_vm._s(article.excerpt))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "block underline mb-2",
+                          attrs: { href: "/articles/" + article.id }
+                        },
+                        [_vm._v("Read More")]
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            ]
           )
         ])
       ])

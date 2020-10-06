@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\PostsController;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,22 +18,22 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
+    return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('/posts/{post}', [PostsController::class, 'show']);
+Route::get('/articles', [ArticlesController::class, 'index'])->name('articles');
 
 
+// Route::get("/articles", [ArticlesController::class, 'index']);
+// Route::post("/articles", [ArticlesController::class, 'store']);
+// Route::get("/articles/create", [ArticlesController::class, 'create']);
+// Route::get("/articles/{article}", [ArticlesController::class, 'show']); // Should go last, as its a wild card pattern matcher.
 
-// Route::get("/articles", function() {
-//     $articles = App\Models\Article::latest()->get();
 
-//     return $articles;
-// });
 
 
 
