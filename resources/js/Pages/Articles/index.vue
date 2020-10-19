@@ -14,16 +14,17 @@
                             <a class="block font-bold mb-2" :href="'/articles/' + article.id">{{ article.title }}</a>
                             <p class="font-thin mb-2">{{ article.excerpt }}</p>
                             <a class="block underline mb-2" :href="'/articles/' + article.id">Read More</a>
-                            </li>
+                        </li>
                     </ul>
                 </div>
+                <a href="/articles/create" class="block bg-blue-500 hover:bg-blue-700 text-white text-center font-bold my-6 max-w-xs mx-auto py-2 px-4 rounded">Create new article</a>
             </div>
         </div>
     </app-layout>
 </template>
 
 <script>
-    import AppLayout from './../Layouts/AppLayout'
+    import AppLayout from './../../Layouts/AppLayout'
 
     export default {
         components: {

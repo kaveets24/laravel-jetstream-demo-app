@@ -14,22 +14,23 @@ class ArticlesController extends Controller
         // Show a list of resources
         $articles = Article::latest()->get();
 
-            return Inertia::render('Articles', [
-                'articles' => $articles
-            ]);
+        return Inertia::render('Articles/index', [
+            'articles' => $articles
+        ]);
     }
 
     public function show($id)
     {
         // Show a single resource
         $article = Article::find($id);
-        return view('articles.show', ['article' => $article]);
+
+        return  Inertia::render('Articles/show', ['article' => $article ]);
     }
 
     public function create()
     {
         // Shows a view to create a new resource.
-        return view('articles.create');
+        return Inertia::render('Articles/create');
     }
     public function store()
     {
