@@ -34,7 +34,7 @@ class ArticlesController extends Controller
     }
     public function store()
     {
-        die("Article stored!");
+        dump(request()->all());
         // Persist the newly created resource and save to the database.
     }
 

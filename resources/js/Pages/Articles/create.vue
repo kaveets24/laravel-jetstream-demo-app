@@ -8,8 +8,7 @@
 
         <div id="page" class="max-w-lg mx-auto py-12">
             <form
-                action="/articles"
-                method="POST"
+                @submit.prevent="submit"
                 class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
             >
                 <div class="mb-4">
@@ -22,6 +21,7 @@
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
                         id="title"
+                        v-model="form.title"
                         name="title"
                         placeholder="Enter a title..."
                     />
@@ -37,6 +37,7 @@
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="excerpt"
                         id="excerpt"
+                        v-model="form.excerpt"
                         cols="30"
                         rows="10"
                         placeholder="Enter an excerpt..."
@@ -53,6 +54,7 @@
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="body"
                         id="body"
+                        v-model="form.body"
                         cols="30"
                         rows="10"
                         placeholder="Write your article here..."
@@ -76,6 +78,25 @@ import AppLayout from "./../../Layouts/AppLayout";
 export default {
     components: {
         AppLayout
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                title: "",
+                body: "",
+                excerpt: ""
+            })
+        };
+    },
+    methods: {
+        submit() {
+            this.$inertia.post("/articles", {
+                title: this.form.title,
+                excerpt: this.form.excerpt,
+                body: this.form.body
+                // _token: this.$page.props.csrf_token
+            });
+        }
     }
 };
 </script>

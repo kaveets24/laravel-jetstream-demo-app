@@ -3493,10 +3493,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      form: this.$inertia.form({
+        title: "",
+        body: "",
+        excerpt: ""
+      })
+    };
+  },
+  methods: {
+    submit: function submit() {
+      this.$inertia.post("/articles", {
+        title: this.form.title,
+        excerpt: this.form.excerpt,
+        body: this.form.body // _token: this.$page.props.csrf_token
+
+      });
+    }
   }
 });
 
@@ -27391,7 +27412,12 @@ var render = function() {
             "form",
             {
               staticClass: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4",
-              attrs: { action: "/articles", method: "POST" }
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
             },
             [
               _c("div", { staticClass: "mb-4" }, [
@@ -27405,6 +27431,14 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.title,
+                      expression: "form.title"
+                    }
+                  ],
                   staticClass:
                     "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
                   attrs: {
@@ -27412,6 +27446,15 @@ var render = function() {
                     id: "title",
                     name: "title",
                     placeholder: "Enter a title..."
+                  },
+                  domProps: { value: _vm.form.title },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "title", $event.target.value)
+                    }
                   }
                 })
               ]),
@@ -27427,6 +27470,14 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.excerpt,
+                      expression: "form.excerpt"
+                    }
+                  ],
                   staticClass:
                     "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
                   attrs: {
@@ -27435,6 +27486,15 @@ var render = function() {
                     cols: "30",
                     rows: "10",
                     placeholder: "Enter an excerpt..."
+                  },
+                  domProps: { value: _vm.form.excerpt },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "excerpt", $event.target.value)
+                    }
                   }
                 })
               ]),
@@ -27450,6 +27510,14 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.body,
+                      expression: "form.body"
+                    }
+                  ],
                   staticClass:
                     "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
                   attrs: {
@@ -27458,6 +27526,15 @@ var render = function() {
                     cols: "30",
                     rows: "10",
                     placeholder: "Write your article here..."
+                  },
+                  domProps: { value: _vm.form.body },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "body", $event.target.value)
+                    }
                   }
                 })
               ]),
